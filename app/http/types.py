@@ -7,7 +7,7 @@ from typing import Final
 
 class HttpStatus(IntEnum):
     OK = 200
-    NOT_FOUND = 404
+    Not_Found = 404
 
 class HttpMethod(StrEnum):
     GET = "GET"
