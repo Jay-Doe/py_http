@@ -7,7 +7,13 @@ from typing import Final
 
 class HttpStatus(IntEnum):
     OK = 200
-    Not_Found = 404
+    NOT_FOUND = 404
+
+    def __str__(self) -> str:
+        if self.value == 404:
+            return "Not Found"
+        else:
+            return self.name
 
 class HttpMethod(StrEnum):
     GET = "GET"
@@ -24,7 +30,7 @@ class HttpResponseLine:
     protocol: str = PROTOCOL
 
     def __str__ (self) -> str:
-        return f"{PROTOCOL} {self.status.value} {self.status.name}"
+        return f"{PROTOCOL} {self.status.value} {str(self.status)}"
 
 @dataclass(frozen=True)
 class HttpRequestLine:
