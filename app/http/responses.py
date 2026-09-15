@@ -28,7 +28,9 @@ def response_for(request: Request) -> Response:
             echo = path.lstrip("/").split("/", maxsplit=1)[0]
             status = HttpStatus.OK
             line = ResponseLine(status, status.name)
-            return make_response(line, Headers(),echo.encode("utf-8"))
+            head = Headers()
+            head.add_header("Content-type", "text/plain")
+            return make_response(line, headers=head,echo.encode("utf-8"))
         case "/":
             status = HttpStatus.OK
             line = ResponseLine(status, status.name)
