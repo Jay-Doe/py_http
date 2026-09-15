@@ -25,7 +25,7 @@ def make_response(
 def response_for(request: Request) -> Response:
     match(request.line.path):
         case path if path.startswith("/echo"):
-            echo = path.lstrip("/").split("/", maxsplit=1)[0]
+            echo = path.lstrip("/echo").split("/", maxsplit=1)[0]
             status = HttpStatus.OK
             line = ResponseLine(status, status.name)
             head = Headers()
