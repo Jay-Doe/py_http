@@ -30,7 +30,7 @@ def response_for(request: Request) -> Response:
             line = ResponseLine(status, status.name)
             head = Headers()
             head.add_header("Content-type", "text/plain")
-            return make_response(line, headers=head,echo.encode("utf-8"))
+            return make_response(line, headers=head, body=echo.encode("utf-8"))
         case "/":
             status = HttpStatus.OK
             line = ResponseLine(status, status.name)
