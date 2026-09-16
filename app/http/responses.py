@@ -31,6 +31,12 @@ def response_for(request: Request) -> Response:
             head = Headers()
             head.add_header("Content-type", "text/plain")
             return make_response(line, headers=head, body=echo.encode("utf-8"))
+        case path if path.startswith("/user-agent"):
+            status = HttpStatus.OK
+            line = ResponseLine(status, status.name)
+            head = Headers()
+            head.add_header("Content-type", "text/plain")
+            return make_response(line, headers=head, body=b"foobar/1.2.3")
         case "/":
             status = HttpStatus.OK
             line = ResponseLine(status, status.name)
